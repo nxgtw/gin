@@ -77,7 +77,7 @@ type Context struct {
 
 	// SameSite allows a server to define a cookie attribute making it impossible for
 	// the browser to send this cookie along with cross-site requests.
-	sameSite http.SameSite
+	// sameSite http.SameSite
 }
 
 /************************************/
@@ -795,10 +795,12 @@ func (c *Context) GetRawData() ([]byte, error) {
 	return ioutil.ReadAll(c.Request.Body)
 }
 
+/*
 // SetSameSite with cookie
 func (c *Context) SetSameSite(samesite http.SameSite) {
 	c.sameSite = samesite
 }
+*/
 
 // SetCookie adds a Set-Cookie header to the ResponseWriter's headers.
 // The provided cookie must have a valid Name. Invalid cookies may be
@@ -813,7 +815,7 @@ func (c *Context) SetCookie(name, value string, maxAge int, path, domain string,
 		MaxAge:   maxAge,
 		Path:     path,
 		Domain:   domain,
-		SameSite: c.sameSite,
+		//SameSite: c.sameSite,
 		Secure:   secure,
 		HttpOnly: httpOnly,
 	})
